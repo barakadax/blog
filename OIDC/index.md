@@ -9,13 +9,13 @@ OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It l
 - Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id`, that is the unique value specifing source system, and `redirect_uri` that tells the openId provider where to redirect back after the login.
 - The provider authenticates the user and redirects back to your `redirect_uri` with an authorization code (in the Authorization Code flow) or an ID token (in implicit flows).
 
-![Authorize diagram](login.png)
+![Authorize diagram](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/OIDC/login.png)
 
 2. Tokenize (server exchanges code for tokens)
 - Your backend exchanges the ID token with the provider's `/token` endpoint (server-to-server).
 - The provider returns tokens: an ID token (a JWT containing user identity claims), an access token, and refresh token.
 
-![Tokenize diagram](tokenize.png)
+![Tokenize diagram](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/OIDC/tokenize.png)
 
 Example ID token payload (decoded JWT):
 ```shell
