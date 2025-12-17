@@ -6,7 +6,7 @@ OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It l
 
 1. Authorize (user login)
 - The user clicks a provider sign-in button on your site.
-- Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id` to validate on behalf which website you were redirected to login and `redirect_uri` to know to where redirect you back after your login.
+- Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id` to validate on behalf the requester which system redirected the user for the login and `redirect_uri` to know to where redirect you back after your login.
 - The provider authenticates the user and redirects back to your `redirect_uri` with an authorization code (in the Authorization Code flow) or an ID token (in implicit flows).
 
 ![Authorize diagram](login.png)
