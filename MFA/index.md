@@ -10,14 +10,14 @@ MFA is an access control method that requires two or more independent forms of e
 - **Mitigates common attacks:** Protects against credential stuffing, phishing, keyloggers, and brute-force attacks.
 - **Limits impact of leaked passwords:** With MFA, leaked credentials alone are usually insufficient to gain access.
 - **Compliance and risk management:** Many regulations and security frameworks expect or require MFA for privileged access and remote login.
-- **Protects sensitive operations:** Step‑up MFA for transactions or admin actions reduces fraud and misuse.
+- **Protects sensitive operations:** Set-up MFA for transactions or admin actions reduces fraud and misuse.
 
 ## The types of authentication
 
 - **Something you know (knowledge):** Passwords, PINs, or answers to secret questions. Easy to deploy but prone to theft and reuse; should not be the sole assurance for sensitive access.
 - **Something you have (possession):** Hardware security keys, smartcards, authenticator apps, or push notifications to a registered device.
 - **Something you are (inherence):** Biometrics such as fingerprints, facial recognition, or iris scans. Convenient but carries privacy, recovery, and false‑positive/negative considerations.
-- **Other/contextual factors:** Location (IP/geofence), device posture, behavior/typing patterns, and time-of-day can be used for risk-based or adaptive authentication (step-up when risk is high).
+- **Other/contextual factors:** Location (IP/geofence), device posture, behavior/typing patterns, and time-of-day can be used for risk-based or adaptive authentication.
 
 ## Best practices
 
