@@ -49,7 +49,7 @@ You can also accept `Authorization` headers bearing access tokens for API reques
 
 - Check the ID token's `exp` claim to ensure it hasn't expired.
 - Verify the ID token signature and claims (`iss`, `aud`, `nonce`) using the provider's JWKS (public keys).
-- Optionally call the provider's `/userinfo` endpoint with the access token to fetch and validate the user's profile.
+- Optionally, call the provider's `/userinfo` endpoint with the access token to fetch and validate the user's profile.
 
 ## Refresh tokens
 
@@ -59,7 +59,7 @@ You can also accept `Authorization` headers bearing access tokens for API reques
 ## Logout
 
 - Clear local session state (cookie or server-side session).
-- Optionally call the provider's end-session or `/logout` endpoint to log out at the IdP; support varies between providers.
+- Optionally, call the provider's end-session or `/logout` endpoint to log out at the IdP; support varies between providers.
 
 ## Sources
 - https://openid.net/
