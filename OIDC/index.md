@@ -1,4 +1,13 @@
 # OpenID Connect (OIDC)
+- [What it is](#what-it-is)
+- [How OIDC works](#how-oidc-works)
+- [Session management (cookies vs storing tokens)](#session-management-cookies-vs-storing-tokens)
+- [Validation](#validation)
+- [Refresh tokens](#refresh-tokens)
+- [Logout](#logout)
+- [Sources](#sources)
+
+## What it is
 
 OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It lets users sign in to websites or apps using an identity provider (IdP) such as Google, Microsoft, Meta and more. This provides a single trusted login (SSO) and reduces the need for separate passwords for every site.
 
@@ -6,7 +15,7 @@ OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It l
 
 1. Authorize (user login)
 - The user clicks a provider sign-in button on your site.
-- Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id`, that is the unique value specifing source system, and `redirect_uri` that tells the openId provider where to redirect back after the login.
+- Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id`, that is the unique value specifying source system, and `redirect_uri` that tells the openId provider where to redirect back after the login.
 - The provider authenticates the user and redirects back to your `redirect_uri` with an authorization code (in the Authorization Code flow) or an ID token (in implicit flows).
 
 ![Authorize diagram](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/OIDC/login.png)

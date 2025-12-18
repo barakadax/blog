@@ -1,4 +1,9 @@
 # Multi Factor Authentication (MFA)
+- [What it is](#what-it-is)
+- [Why you need it](#why-you-need-it)
+- [The types of authentication](#the-types-of-authentication)
+- [Best practices](#best-practices)
+- [Sources](#sources)
 
 ## What it is
 
