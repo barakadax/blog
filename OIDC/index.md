@@ -8,9 +8,11 @@
 - [Sources](#sources)
 
 ## What it is
+
 OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It lets users sign in to websites or apps using an identity provider (IdP) such as Google, Microsoft, Meta and more. This provides a single trusted login (SSO) and reduces the need for separate passwords for every site.
 
 ## How OIDC works
+
 1. Authorize (user login)
 - The user clicks a provider sign-in button on your site.
 - Your site redirects the user's browser to the provider's `/authorize` endpoint with parameters like `client_id`, that is the unique value specifying source system, and `redirect_uri` that tells the openId provider where to redirect back after the login.
@@ -41,6 +43,7 @@ Example ID token payload (decoded JWT):
 ```
 
 ## Session management (cookies vs storing tokens)
+
 - Option A — Store the ID token (JWT) in a secure, HTTP-only cookie:
   - Pros: simpler to implement; backend can read token to get user info.
   - Cons: cookie carries user claims; revocation is harder; token size can be large.
@@ -52,17 +55,21 @@ Example ID token payload (decoded JWT):
 You can also accept `Authorization` headers bearing access tokens for API requests.
 
 ## Validation
+
 - Check the ID token's `exp` claim to ensure it hasn't expired.
 - Verify the ID token signature and claims (`iss`, `aud`, `nonce`) using the provider's JWKS (public keys).
 - Optionally, call the provider's `/userinfo` endpoint with the access token to fetch and validate the user's profile.
 
 ## Refresh tokens
+
 - If the provider issues a `refresh_token`, your backend can call `/token` with it to obtain new access/ID tokens without user interaction.
 - Keep refresh tokens secure and rotate or revoke them when needed.
 
 ## Logout
+
 - Clear local session state (cookie or server-side session).
 - Optionally, call the provider's end-session or `/logout` endpoint to log out at the IdP; support varies between providers.
 
 ## Sources
+
 - https://openid.net/
