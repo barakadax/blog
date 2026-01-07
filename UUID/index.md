@@ -2,14 +2,14 @@
 - [What it is](#what-it-is)
 - [Why we need it](#why-we-need-it)
 - [Versions](#versions)
-- - [Version 1](#version-1)
-- - [Version 2](#version-2)
-- - [Version 3](#version-3)
-- - [Version 4](#version-4)
-- - [Version 5](#version-5)
-- - [Version 6](#version-6)
-- - [Version 7](#version-7)
-- - [Version 8](#version-8)
+  - [Version 1](#version-1)
+  - [Version 2](#version-2)
+  - [Version 3](#version-3)
+  - [Version 4](#version-4)
+  - [Version 5](#version-5)
+  - [Version 6](#version-6)
+  - [Version 7](#version-7)
+  - [Version 8](#version-8)
 - [Differences between GUID and UUID](#differences-between-guid-and-uuid)
 - [Data Representation and Endianness](#data-representation-and-endianness)
 - [ULID vs. UUID v7](#ulid-vs-uuid-v7)
@@ -108,6 +108,8 @@ Microsoft's **GUID (Globally Unique Identifier)** often uses a "mixed-endian" fo
 This is why a UUID stored in a Windows registry might look "flipped" compared to a standard UUID string if viewed as raw bytes.
 Always check if your library/driver handles this conversion.
 
+---
+
 ## ULID vs. UUID v7
 
 **ULID (Universally Unique Lexicographically Sortable Identifier)** was created to solve many of the same problems that UUID v7 now addresses.
@@ -131,6 +133,8 @@ Unlike the standard UUID hyphenated hex string, ULIDs are typically encoded usin
 **Which one to use?**
 If you need strict adherence to existing UUID standards and broad library support, **UUID v7** is the better choice.
 If you want a more human-readable, URL-friendly string format out of the box, **ULID** remains a popular alternative.
+
+---
 
 ## Security and Privacy
 
@@ -160,6 +164,8 @@ They are **not random** and should never be used as secret tokens.
 | **4** | None | Low (if CSPRNG is good) | Randomness exhaustion/collisions |
 | **7** | Coarse Time | Low | Chronological tracking |
 | **8** | Custom (depends on impl) | Varies | Implementation-specific flaws |
+
+---
 
 ## Sources
 
