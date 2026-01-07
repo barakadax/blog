@@ -10,6 +10,7 @@
   - [Version 6](#version-6)
   - [Version 7](#version-7)
   - [Version 8](#version-8)
+- [Special UUIDs](#special-uuids)
 - [Differences between GUID and UUID](#differences-between-guid-and-uuid)
 - [Data Representation and Endianness](#data-representation-and-endianness)
 - [ULID vs. UUID v7](#ulid-vs-uuid-v7)
@@ -89,6 +90,13 @@ When you need to include specialized data (like a different timestamp format or 
 
 ---
 
+### Special UUIDs
+RFC 9562 also defines two special cases:
+- **Nil UUID**: All bits set to zero (`00000000-0000-0000-0000-000000000000`). Used as a placeholder or to indicate the absence of an ID.
+- **Max UUID**: All bits set to one (`ffffffff-ffff-ffff-ffff-ffffffffffff`). Can be used as a sentinel value in certain sorting or indexing operations.
+
+---
+
 ## Differences between GUID and UUID
 
 Globally unique identifier (GUID) is Microsoft's implementation of UUID.
@@ -141,8 +149,8 @@ If you want a more human-readable, URL-friendly string format out of the box, **
 Different UUID versions offer varying levels of security and privacy. Choosing the wrong version can lead to unintended information disclosure.
 
 ### Privacy Leaks (Traceability)
-- **Version 1 & 2**: These are the most "leaky." Because they include the host's **MAC address**, an observer can identify the specific physical machine that generated the ID.
-Furthermore, because they use a **high-resolution timestamp**, an observer can tell exactly when the ID was created, down to 100-nanosecond intervals.
+- **Version 1, 2 & 6**: These are the most "leaky." Because they often include the host's **MAC address**, an observer can identify the specific physical machine that generated the ID.
+Furthermore, because they use a **high-resolution timestamp**, an observer can tell exactly when the ID was created, down to 100-nanosecond intervals (for v1/v6).
 This allows for cross-referencing and tracking of a user's activity across different systems.
 - **Version 7**: While it removes the MAC address (replacing it with random data), it still reveals the **creation time** (millisecond precision).
 While less revealing than a MAC address, it still allows for chronological ordering and logical grouping of events.
@@ -159,7 +167,7 @@ They are **not random** and should never be used as secret tokens.
 
 | Version | Information Leaked | Predictability | Primary Risk |
 | :--- | :--- | :--- | :--- |
-| **1 & 2** | MAC Address, Precise Time | High | Physical hardware tracking |
+| **1, 2 & 6** | MAC Address, Precise Time | High | Physical hardware tracking |
 | **3 & 5** | Source Name (if guessable) | None (Deterministic) | Information discovery |
 | **4** | None | Low (if CSPRNG is good) | Randomness exhaustion/collisions |
 | **7** | Coarse Time | Low | Chronological tracking |
