@@ -2,6 +2,14 @@
 - [What it is](#what-it-is)
 - [Why we need it](#why-we-need-it)
 - [Versions](#versions)
+- - [Version 1](#version-1)
+- - [Version 2](#version-2)
+- - [Version 3](#version-3)
+- - [Version 4](#version-4)
+- - [Version 5](#version-5)
+- - [Version 6](#version-6)
+- - [Version 7](#version-7)
+- - [Version 8](#version-8)
 - [Differences between GUID and UUID](#differences-between-guid-and-uuid)
 - [Data Representation and Endianness](#data-representation-and-endianness)
 - [ULID vs. UUID v7](#ulid-vs-uuid-v7)
@@ -10,15 +18,20 @@
 
 ## What it is
 
-UUID is a 128-bit value used to identify information in computer systems.
-It is a 32-digit hexadecimal (base 16) number, usually written as 5 groups of digits separated by hyphens (e.g., `123e4567-e89b-12d3-a456-426614174000`).
-The groups are split into 8-4-4-4-12 characters respectively.
+A **Universally Unique Identifier (UUID)** is a 128-bit value used to identify information in computer systems without a central registration authority.
+
+- **Format**: A 32-digit hexadecimal string.
+- **Structure**: Usually written in 5 groups separated by hyphens (8-4-4-4-12 characters).
+- **Example**: `123e4567-e89b-12d3-a456-426614174000`
 
 ## Why we need it
 
-UUIDs are used to identify information in computer systems.
-They are used to identify files, directories, and other information in a unique way.
-They are also used to identify information in a distributed system, where the same information may be stored in multiple locations.
+UUIDs enable decentralized uniqueness. They are essential for:
+- **Distributed Systems**: Generating unique keys across multiple servers without coordination.
+- **Database Primary Keys**: Avoiding collisions when merging datasets.
+- **Asset Identification**: Tracking files, devices, or sessions across different environments.
+
+---
 
 ## Versions
 
@@ -74,6 +87,8 @@ A custom format defined in RFC 9562 that allows for implementation-specific data
 #### When should you use it
 When you need to include specialized data (like a different timestamp format or custom entropy) that isn't supported by other versions.
 
+---
+
 ## Differences between GUID and UUID
 
 globally unique identifier (GUID) is Microsoft's implementation of UUID.
@@ -91,13 +106,16 @@ Microsoft's **GUID (Globally Unique Identifier)** often uses a "mixed-endian" fo
 - The remaining fields (Data4) are stored as **Big-Endian**.
 
 This is why a UUID stored in a Windows registry might look "flipped" compared to a standard UUID string if viewed as raw bytes.
+Always check if your library/driver handles this conversion.
 
 ## ULID vs. UUID v7
 
-**ULID (Universally Unique Lexicographically Sortable Identifier)** was created to solve many of the same problems that UUID v7 now addresses. Both are 128-bit identifiers designed for database performance through time-based sorting.
+**ULID (Universally Unique Lexicographically Sortable Identifier)** was created to solve many of the same problems that UUID v7 now addresses.
+Both are 128-bit identifiers designed for database performance through time-based sorting.
 
 ### What is ULID?
-ULID uses a 48-bit timestamp (millisecond precision) followed by 80 bits of randomness. Unlike the standard UUID hyphenated hex string, ULIDs are typically encoded using **Crockford's Base32** (e.g., `01AN4Z07BY79KA1307SR9X4MV3`), which is more compact and excludes confusing characters like `I`, `L`, `O`, and `U`.
+ULID uses a 48-bit timestamp (millisecond precision) followed by 80 bits of randomness.
+Unlike the standard UUID hyphenated hex string, ULIDs are typically encoded using **Crockford's Base32** (e.g., `01AN4Z07BY79KA1307SR9X4MV3`), which is more compact and excludes confusing characters like `I`, `L`, `O`, and `U`.
 
 ### Comparison
 
@@ -111,18 +129,24 @@ ULID uses a 48-bit timestamp (millisecond precision) followed by 80 bits of rand
 | **Compatibility** | Byte-compatible with UUID | Fully UUID compliant |
 
 **Which one to use?**
-If you need strict adherence to existing UUID standards and broad library support, **UUID v7** is the better choice. If you want a more human-readable, URL-friendly string format out of the box, **ULID** remains a popular alternative.
+If you need strict adherence to existing UUID standards and broad library support, **UUID v7** is the better choice.
+If you want a more human-readable, URL-friendly string format out of the box, **ULID** remains a popular alternative.
 
 ## Security and Privacy
 
 Different UUID versions offer varying levels of security and privacy. Choosing the wrong version can lead to unintended information disclosure.
 
 ### Privacy Leaks (Traceability)
-- **Version 1 & 2**: These are the most "leaky." Because they include the host's **MAC address**, an observer can identify the specific physical machine that generated the ID. Furthermore, because they use a **high-resolution timestamp**, an observer can tell exactly when the ID was created, down to 100-nanosecond intervals. This allows for cross-referencing and tracking of a user's activity across different systems.
-- **Version 7**: While it removes the MAC address (replacing it with random data), it still reveals the **creation time** (millisecond precision). While less revealing than a MAC address, it still allows for chronological ordering and logical grouping of events.
+- **Version 1 & 2**: These are the most "leaky." Because they include the host's **MAC address**, an observer can identify the specific physical machine that generated the ID.
+Furthermore, because they use a **high-resolution timestamp**, an observer can tell exactly when the ID was created, down to 100-nanosecond intervals.
+This allows for cross-referencing and tracking of a user's activity across different systems.
+- **Version 7**: While it removes the MAC address (replacing it with random data), it still reveals the **creation time** (millisecond precision).
+While less revealing than a MAC address, it still allows for chronological ordering and logical grouping of events.
 
 ### Deterministic Information (Searchability)
-- **Version 3 & 5**: These are based on hashing a name within a namespace. If an attacker knows the namespace and can guess the possible source "names" (like usernames or email addresses), they can pre-calculate the UUIDs to verify if a specific person exists in a database. They are **not random** and should never be used as secret tokens.
+- **Version 3 & 5**: These are based on hashing a name within a namespace.
+If an attacker knows the namespace and can guess the possible source "names" (like usernames or email addresses), they can pre-calculate the UUIDs to verify if a specific person exists in a database.
+They are **not random** and should never be used as secret tokens.
 
 ### Unpredictability
 - **Version 4**: This is the most secure from a privacy standpoint. Since it is (mostly) random, it leaks no information about the machine or the time of creation. However, its security relies entirely on the quality of the system's **CSPRNG (Cryptographically Secure Pseudo-Random Number Generator)**. If the random seed is weak, the UUIDs become predictable.
@@ -142,5 +166,5 @@ Different UUID versions offer varying levels of security and privacy. Choosing t
 - [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 - [RFC 4122](https://tools.ietf.org/html/rfc4122)
 - [RFC 9562](https://tools.ietf.org/html/rfc9562)
-- [Python docs](https://docs.python.org/3/library/uuid.html)
+- [Python: uuid module](https://docs.python.org/3/library/uuid.html)
 - [Every UUID](https://everyuuid.com/)
