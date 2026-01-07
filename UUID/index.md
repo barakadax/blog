@@ -91,21 +91,21 @@ When you need to include specialized data (like a different timestamp format or 
 
 ## Differences between GUID and UUID
 
-globally unique identifier (GUID) is Microsoft's implementation of UUID.
+Globally unique identifier (GUID) is Microsoft's implementation of UUID.
 
 ## Data Representation and Endianness
 
-UUIDs have different byte-order representations depending on the system:
+UUIDs have different byte-order representations depending on the CPU architecture:
 
 ### Big-Endian (Network Byte Order)
 The standard representation defined by RFC 4122. All fields are stored in "most significant byte first" order. This is what you see in most Linux/Unix systems and web APIs.
 
-### Little-Endian / Mixed-Endian (Microsoft GUID)
-Microsoft's **GUID (Globally Unique Identifier)** often uses a "mixed-endian" format. 
+### Mixed-Endian GUID
+GUID often uses a "mixed-endian" format. 
 - The first three fields (Data1, Data2, Data3) are stored as **Little-Endian**.
 - The remaining fields (Data4) are stored as **Big-Endian**.
 
-This is why a UUID stored in a Windows registry might look "flipped" compared to a standard UUID string if viewed as raw bytes.
+If you were to build UUID and GUID from the same parameters, the GUID would look "flipped" compared to a standard UUID string if viewed as raw bytes.
 Always check if your library/driver handles this conversion.
 
 ---
@@ -174,3 +174,4 @@ They are **not random** and should never be used as secret tokens.
 - [RFC 9562](https://tools.ietf.org/html/rfc9562)
 - [Python: uuid module](https://docs.python.org/3/library/uuid.html)
 - [Every UUID](https://everyuuid.com/)
+- [GUID byte order](https://stackoverflow.com/questions/10190817/guid-byte-order-in-net)
