@@ -22,6 +22,7 @@ For both examples converting to upper or lower case won't work,
 Many programming languages provide ways to compare strings with solution to this problem,
 
 ### C#
+.net contains culture information, if you know what culture the input comes from the best way to compare is:
 ```shell
 using System;
 using System.Globalization;
