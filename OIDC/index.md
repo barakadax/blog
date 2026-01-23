@@ -57,7 +57,7 @@ You can also accept `Authorization` headers bearing access tokens for API reques
 ## Validation
 
 - Check the ID token's `exp` claim to ensure it hasn't expired.
-- Verify the ID token signature and claims (`iss`, `aud`, `nonce`) using the provider's JWKS (public keys).
+- Verify the ID token signature and claims (`iss`, `aud`, `nonce`) using the provider's JWKS (public keys) endpoint.
 - Optionally, call the provider's `/userinfo` endpoint with the access token to fetch and validate the user's profile.
 
 ## Refresh tokens
