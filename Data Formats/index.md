@@ -19,7 +19,7 @@
 - [Summary](#summary)
 - [Sources](#sources)
 
-## What is a Data Format?
+## What are Data Formats?
 
 Data formats are the standardized rules for structuring information so different systems can exchange or store it accurately,
 They act as a "language contract" between a sender and a receiver or storage system,
