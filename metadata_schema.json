@@ -1,0 +1,40 @@
+{
+    "title": "Article Metadata",
+    "type": "object",
+    "required": [
+        "author",
+        "date",
+        "level",
+        "tags"
+    ],
+    "properties": {
+        "author": {
+            "type": "string",
+            "description": "The name of the person who wrote the article."
+        },
+        "date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "The publication date in YYYY-MM-DD format."
+        },
+        "level": {
+            "type": "string",
+            "enum": [
+                "Beginner",
+                "Intermediate",
+                "Advanced"
+            ],
+            "description": "The difficulty level of the article content."
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "description": "Keywords used by search to find these articles."
+        }
+    },
+    "additionalProperties": false
+}

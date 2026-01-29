@@ -1,0 +1,18 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-01-29",
+    "level": "Advanced",
+    "tags": [
+        "python",
+        "nodejs js ts javascript typescript",
+        "gil",
+        "global interpreter lock",
+        "threading",
+        "thread safe",
+        "concurrency",
+        "performance",
+        "multithreading",
+        "multiprocessing",
+        "parallelism"
+    ]
+}

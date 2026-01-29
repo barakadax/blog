@@ -1,0 +1,14 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-01-29",
+    "level": "Beginner",
+    "tags": [
+        "security",
+        "authentication",
+        "authorization",
+        "login logout",
+        "2fa",
+        "multi factor authentication",
+        "access control"
+    ]
+}

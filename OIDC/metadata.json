@@ -1,0 +1,21 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-01-29",
+    "level": "Advanced",
+    "tags": [
+        "security",
+        "authentication",
+        "authorization",
+        "openid connect",
+        "oauth2",
+        "identity",
+        "protocol",
+        "pattern",
+        "jwt json web token",
+        "id token",
+        "access token",
+        "refresh token",
+        "sso single sign on",
+        "login logout"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-01-29",
+    "level": "Intermediate",
+    "tags": [
+        "json",
+        "xml",
+        "csv",
+        "yaml",
+        "pattern",
+        "design",
+        "serialization deserialization",
+        "formats",
+        "structure"
+    ]
+}
