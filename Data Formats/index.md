@@ -365,3 +365,4 @@ Choosing the right format depends on the specific trade-offs between speed, size
 - [Arrow](https://arrow.apache.org/)
 - [Pickle](https://docs.python.org/3/library/pickle.html)
 - [Clean code](http://cleancoder.com/products)
+- [Standards organizations](https://barakadax.github.io/blog?article=Standards%20organizations)

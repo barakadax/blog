@@ -23,13 +23,13 @@ There are 3 ways to gossip, push, pull and push-pull, all 3 ways convergence com
 Node sends the information only to the N nodes it is aware of.
 Those nodes spread the information to the N nodes they are aware of until the information is spread across the whole system.
 
-![Push GIF]()
+![Push GIF](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Gossip/push.gif)
 
 ### Pull
 Node periodically asks the N nodes it is aware of for the information.
 Once new information is received, the node will update other nodes with the information when those nodes will pull the information for this node until the information is spread across the whole system.
 
-![Pull GIF]()
+![Pull GIF](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Gossip/pull.gif)
 
 ### Push-Pull
 Nodes have both push and pull capabilities.
