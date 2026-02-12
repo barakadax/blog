@@ -14,5 +14,6 @@
         "multithreading",
         "multiprocessing",
         "parallelism"
-    ]
+    ],
+    "share_text": "Ever wondered why threading isn't true parallelism? 🤔 Global Interpreter Lock (GIL), discover the logic behind the thread locking ✨"
 }

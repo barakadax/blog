@@ -12,5 +12,6 @@
         "serialization deserialization",
         "formats",
         "structure"
-    ]
+    ],
+    "share_text": "JSON, XML, CSV, YAML - what's the difference? 🤔 Data formats, discover the logic behind each structure! ✨"
 }

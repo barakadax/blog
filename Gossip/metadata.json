@@ -1,0 +1,22 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-02-12",
+    "level": "Intermediate",
+    "tags": [
+        "distributed systems",
+        "protocol",
+        "broadcast algorithms",
+        "multicast",
+        "pattern",
+        "design",
+        "networking",
+        "architecture",
+        "connection",
+        "communication",
+        "micro services",
+        "discovery",
+        "scalability",
+        "fault tolerance"
+    ],
+    "share_text": "Gossips travel far and wide, and so does the Gossip Protocol! 🌐 Discover how it works and how it's used in distributed systems. 🗣️"
+}

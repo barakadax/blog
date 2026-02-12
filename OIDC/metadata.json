@@ -17,5 +17,6 @@
         "refresh token",
         "sso single sign on",
         "login logout"
-    ]
+    ],
+    "share_text": "Ever wondered how 'Login with Google' actually works? 🤔 OpenID Connect (OIDC), discover the magic behind secure authentication! ✨"
 }

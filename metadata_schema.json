@@ -5,7 +5,8 @@
         "author",
         "date",
         "level",
-        "tags"
+        "tags",
+        "share_text"
     ],
     "properties": {
         "author": {
@@ -34,6 +35,10 @@
             },
             "minItems": 1,
             "description": "Keywords used by search to find these articles."
+        },
+        "share_text": {
+            "type": "string",
+            "description": "The text to be shared on social media."
         }
     },
     "additionalProperties": false

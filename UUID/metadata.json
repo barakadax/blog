@@ -8,5 +8,6 @@
         "database",
         "unique identifier",
         "primary key"
-    ]
+    ],
+    "share_text": "UUIDs are everywhere, but do you know how they work? 🧐 Dive into the world of unique identifiers and discover the logic behind UUIDs! ✨"
 }

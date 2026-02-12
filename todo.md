@@ -52,6 +52,4 @@
 - data structures
 - race conditions
 - API Architectural Styles
-- Standards Organizations
 - Network Security and Access Solutions
-- Types of processing units
