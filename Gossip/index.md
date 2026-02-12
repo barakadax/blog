@@ -4,14 +4,17 @@
   - [Push](#push)
   - [Pull](#pull)
   - [Push-Pull](#push-pull)
-- [Examples of of usages](#examples-of-of-usages)
-- [Pros and cons](#pros-and-cons)
+- [Gossip Variants](#gossip-variants)
+  - [Anti-Entropy](#anti-entropy)
+  - [Rumor-Mongering](#rumor-mongering)
+- [Real-world Examples](#real-world-examples)
+- [Pros and Cons](#pros-and-cons)
 - [Sources](#sources)
 
 ## What is the gossip protocol?
 
-Gossip is a multicast protocol for sharing information between nodes in a distributed system.
-Just like an epidemic spreads from person to person, the gossip protocol spreads information from node to node.
+Gossip is a decentralized, peer-to-peer multicast protocol for sharing information between nodes in a distributed system. 
+Just like an epidemic spreads from person to person, the gossip protocol spreads information from node to node through random peer selection. It is designed to ensure **eventual consistency** and high **fault tolerance**.
 
 ## How does it work?
 
@@ -20,46 +23,56 @@ Node only update the information and redistribute it if the new information has 
 There are 3 ways to gossip, push, pull and push-pull, all 3 ways convergence complexity is `O(log N)`.
 
 ### Push
-Node sends the information only to the N nodes it is aware of.
-Those nodes spread the information to the N nodes they are aware of until the information is spread across the whole system.
+A node with new information actively sends (pushes) it to its N known peers.
+- **Early Phase**: Highly efficient; information spreads exponentially fast.
+- **Late Phase**: Inefficient; nodes keep pushing to peers who likely already have the data, wasting bandwidth.
 
 ![Push GIF](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Gossip/push.gif)
 
 ### Pull
-Node periodically asks the N nodes it is aware of for the information.
-Once new information is received, the node will update other nodes with the information when those nodes will pull the information for this node until the information is spread across the whole system.
+A node periodically asks (pulls) its N known peers for updates.
+- **Early Phase**: Inefficient; many pulls return no new data if few nodes are "infected".
+- **Late Phase**: Highly efficient; uninformed nodes actively seek out the remaining updates, solving the "blind spot" problem.
 
 ![Pull GIF](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Gossip/pull.gif)
 
 ### Push-Pull
-Nodes have both push and pull capabilities.
+Nodes combine both capabilities. This is the **optimal** approach for rapid dissemination.
+Leveraging the speed of Push in the early phase and the reliability of Pull in the late phase.
 
-## Examples of of usages
+## Gossip Variants
 
-- **Apache Hadoop**: communication and managing member nodes.
-- **Amazon DynamoDB**: node discovery and cluster managment.
-- **Kubernetes**: node discovery and cluster managment.
-- **Torrent**: tracking of files and peers.
+### Anti-Entropy
+Used for state reconciliation (full data synchronization).
+Nodes exchange their entire dataset or summaries to identify and fix inconsistencies. This is a "safety net" for eventual consistency.
+
+### Rumor-Mongering
+Used for rapid propagation of new events or updates.
+When a node receives a "rumor", it gossips it frequently.
+To prevent infinite loops, nodes use a "cooling off" period (SIR model: Susceptible, Infected, Removed) where they stop gossiping after a message has spread sufficiently.
+
+## Real-world Examples
+
+- **Apache Cassandra**: Uses gossip for cluster membership, metadata propagation, and failure detection via the **Phi Accrual Failure Detector** (calculating a suspicion level rather than a fixed timeout).
+- **Amazon DynamoDB**: Employs gossip for node discovery and cluster management, utilizing **Seed Nodes** to prevent network partitions.
+- **Kubernetes**: Used by various components (like Calico or memberlist) for node discovery and health checks.
+- **Apache Hadoop**: Communication and management of member nodes across large clusters.
+- **BitTorrent**: Tracking files and peers in a decentralized manner.
+- **Messaging (Slack/WhatsApp)**: Presence detection and message routing synchronization between clusters and devices.
 - **Microsoft Teams**: presence detection and contact discovery.
-- **Slack**: presence detection and messaging synchronization.
-- **Cassandra**: cluster membership, propagate metadata and detect failures.
-- **WhatsApp**: message routring and synchronization between devices.
 
-## Pros and cons
+## Pros and Cons
 
 ### Pros
-
-- **Scalability**: The gossip protocol is highly scalable, as it can be used to spread information between nodes in a distributed system.
-- **Fault tolerance**: The gossip protocol is highly fault tolerant, as it can be used to spread information between nodes in a distributed system.
-- **Simplicity**: The gossip protocol is simple to implement, as it can be used to spread information between nodes in a distributed system.
+- **Scalability**: Nodes only talk to a small subset of peers, so the load on any single node remains constant even as the cluster grows.
+- **Fault Tolerance**: No central point of failure; if a node goes down, information naturally routes around it.
+- **Simplicity**: No complex leader election or consensus algorithms (like Paxos/Raft) are required for basic state sharing.
 
 ### Cons
-
-- **Latency**: The gossip protocol is not the fastest way to spread information between nodes in a distributed system.
-- **Bandwidth**: The gossip protocol can be bandwidth intensive, as it can be used to spread information between nodes in a distributed system.
-- **Complexity**: The gossip protocol can be complex to implement, as it can be used to spread information between nodes in a distributed system.
-- **Nodes not knowing each other**: Node might end up not knowing each other so they won't succeed in push and pull, therefor data won't spread.
-- **Connection waste**: In push a node might push to another node that already has the information, in pull a node that already pulled that data will continue to pull for information periofically even when there is no new data, wasting resources.
+- **Latency**: Since it relies on random rounds, it is not "real-time". Information takes time to converge across the whole system.
+- **Bandwidth Overhead**: Redundant messages are common, especially in large clusters or pure Push models.
+- **Eventual (Not Strong) Consistency**: Data might be stale on some nodes for a short period.
+- **Connectivity Risks**: If nodes don't know enough peers, "islands" can form where data never reaches certain partitions.
 
 ## Sources
 

@@ -28,7 +28,7 @@ Ensuring that data is encoded into a format that can later be reconstructed into
 ## JSON
 
 - **Created:** 2001 by Douglas Crockford.
-- **Ownership & License:** Public Domain (standardized by ECMA and ISO). The original "JSON License" had a "do no evil" clause, but modern standards are open and non-restrictive.
+- **Ownership & License:** Public Domain (standardized by ECMA and ISO, see [standards organizations article](https://barakadax.github.io/blog?article=Standards%20organizations)). The original "JSON License" had a "do no evil" clause, but modern standards are open and non-restrictive.
 - **Is it type safe:** No (it's dynamically typed; requires JSON Schema for validation).
 - **Is it serializable:** Yes.
 - **Human Readable:** Yes.
