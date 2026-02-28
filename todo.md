@@ -12,9 +12,7 @@
 - async vs sync,
 - hash vs encryption,
 - fluent interface,
-- complexity,
 - consistent hashing,
-- gossip,
 - TOTP,
 - C# Polly,
 - Tail os and other private untraceable OS and why,
@@ -23,7 +21,6 @@
 - Inversion of control,
 - little big endian,
 - aloha protocol,
-- push - pull - websocket and event based,
 - queues and when (also queues as DB),
 - Win vs Linux memory,
 - When and why k8s and docker/podman,
@@ -49,7 +46,6 @@
 - parquet data format,
 - syn flood
 - encoding
-- data structures
 - race conditions
 - API Architectural Styles
 - Network Security and Access Solutions
