@@ -29,7 +29,7 @@ Big O describes the **worst-case** upper bound of an algorithm's growth rate, ig
 > [!NOTE]
 > Top to bottom is from best to worst.
 
-![Data structures hierarchy](graph.png)
+![Data structures hierarchy](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Complexity/graph.png)
 
 ---
 

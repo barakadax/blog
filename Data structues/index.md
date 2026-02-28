@@ -17,7 +17,7 @@ For example seaching values or managing hierarchy.
 
 ## Types of data structures
 
-![Data structures hierarchy](graph.png)
+![Data structures hierarchy](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/Data%20structues/graph.png)
 
 ### Primitive
 Primitive data structures are the basic data structures that are used to store single values, the actual value, directly in memory, always in fixed size:
@@ -70,6 +70,7 @@ These require traversing through other elements to reach a specific one:
   - *When to use:* For task scheduling (CPU/Printer), handling asynchronous data (IO buffers), or BFS (Breadth-First Search).
 ##### Complexity Summary (Linear - Worst Case)
 
+
 | Data Structure | Access | Search | Insert | Delete | Space |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Array** | $O(1)$ | $O(n)$ | $O(n)$ | $O(n)$ | $O(n)$ |
@@ -112,6 +113,7 @@ Elements in non-linear data structures are not arranged in a sequence. Instead, 
   - *When to use:* For autocomplete features, spell checkers, and IP routing.
 
 ##### Complexity Summary (Hierarchical - Worst Case)
+
 
 | Data Structure | Search | Insert | Delete | Space |
 | :--- | :---: | :---: | :---: | :---: |
@@ -163,6 +165,7 @@ Elements in non-linear data structures are not arranged in a sequence. Instead, 
 
 ##### Complexity Summary (Unordered & Advanced - Worst Case)
 
+
 | Data Structure | Search | Insert | Delete | Space |
 | :--- | :---: | :---: | :---: | :---: |
 | **Hash Table/Map/Set** | $O(n)$ | $O(n)$ | $O(n)$| $O(n)$ |
@@ -185,6 +188,7 @@ Elements in non-linear data structures are not arranged in a sequence. Instead, 
 
 ## Sources
 
+- [Complexity](https://barakadax.github.io/blog?article=Complexity)
 - [Computerphile](https://www.youtube.com/@Computerphile)
 - [W3schools](https://www.w3schools.com/dsa/dsa_intro.php)
 - [Wikipedia](https://en.wikipedia.org/wiki/List_of_data_structures)
