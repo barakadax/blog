@@ -59,6 +59,7 @@ These require traversing through other elements to reach a specific one:
   - **Singly**: Each node points to the next.
   - **Doubly**: Each node points to both next and previous.
   - **Circular**: The last node points back to the first.
+  - **Multi-level**: Each node can create a 2D-like structure, that is essentially a list of lists, instead of pointer just to next also have a pointer to bottom
   - *When to use:* When frequent insertions/deletions at both ends are needed, or for implementing stacks/queues without size limits.
 - **Stacks**: Follows LIFO (Last-In-First-Out) principle.
   - *When to use:* For undo mechanisms in software, expression evaluation (parsers), or backtracking algorithms.
@@ -80,7 +81,8 @@ These require traversing through other elements to reach a specific one:
 | **Tuple** | $O(1)$ | $O(n)$ | $N/A$ | $N/A$ | $O(n)$ |
 | **Singly Linked List** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
 | **Doubly Linked List** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
-| **Circular List** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
+| **Circular Linked List** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
+| **Multi-level Linked List** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
 | **Stack** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
 | **Simple Queue** | $O(n)$ | $O(n)$ | $O(1)$ | $O(1)$ | $O(n)$ |
 | **Priority Queue** | $O(1)$ | $O(n)$ | $O(\log n)$ | $O(\log n)$ | $O(n)$ |
