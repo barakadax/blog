@@ -1,6 +1,5 @@
 # TODO
 
-- Testing pyramid,
 - crawlers and indexing,
 - scrapers,
 - why you should never write backend server in NodeJS,
