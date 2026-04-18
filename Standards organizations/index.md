@@ -45,7 +45,7 @@ Here is an example for each of the types listed above:
 - **Governmental / Regulatory:** **NIST** (National Institute of Standards and Technology)
     - **Famous standard:** **AES** (Advanced Encryption Standard)
 - **De facto:** **Adobe**
-    - **Famous standard:** **PDF** (Portable Document Format)
+    - **Famous standard:** **PDF** (Portable Document Format) — originally proprietary to Adobe; later released as an open standard and published as ISO 32000-1 in 2008.
 - **Open source communities:** **Linux Foundation**
     - **Famous standard:** **SPDX** (Software Package Data Exchange)
 - **Academic:** **ISTE** (International Society for Technology in Education)

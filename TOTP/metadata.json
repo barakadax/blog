@@ -1,0 +1,19 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-04-18",
+    "level": "Intermediate",
+    "tags": [
+        "security",
+        "authentication",
+        "2fa",
+        "mfa",
+        "otp",
+        "time based one time passwords",
+        "hotp",
+        "authenticator",
+        "login logout",
+        "multi factor authentication",
+        "access control"
+    ],
+    "share_text": "How does your authenticator app generate a new code every 30 seconds? 🤔 Time-based One-Time Passwords (TOTP), discover the algorithm behind secure 2FA! ✨"
+}

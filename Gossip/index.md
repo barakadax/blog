@@ -56,7 +56,7 @@ To prevent infinite loops, nodes use a "cooling off" period (SIR model: Suscepti
 - **Apache Cassandra**: Uses gossip for cluster membership, metadata propagation, and failure detection via the **Phi Accrual Failure Detector** (calculating a suspicion level rather than a fixed timeout).
 - **Amazon DynamoDB**: Employs gossip for node discovery and cluster management, utilizing **Seed Nodes** to prevent network partitions.
 - **Kubernetes**: Used by various components (like Calico or memberlist) for node discovery and health checks.
-- **Apache Hadoop**: Communication and management of member nodes across large clusters.
+- **Apache Hadoop**: Some components use gossip-inspired mechanisms for cluster membership, though Hadoop primarily relies on its own heartbeat/RPC protocols via YARN and HDFS.
 - **BitTorrent**: Tracking files and peers in a decentralized manner.
 - **Messaging (Slack/WhatsApp)**: Presence detection and message routing synchronization between clusters and devices.
 - **Microsoft Teams**: presence detection and contact discovery.

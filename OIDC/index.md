@@ -21,7 +21,7 @@ OpenID Connect (OIDC) is an authentication layer built on top of OAuth 2.0. It l
 ![Authorize diagram](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/OIDC/login.png)
 
 2. Tokenize (server exchanges code for tokens)
-- Your backend exchanges the ID token with the provider's `/token` endpoint (server-to-server).
+- Your backend exchanges the **authorization code** with the provider's `/token` endpoint (server-to-server).
 - The provider returns tokens: an ID token (a JWT containing user identity claims), an access token, and refresh token.
 
 ![Tokenize diagram](https://raw.githubusercontent.com/barakadax/blog/refs/heads/Master/OIDC/tokenize.png)

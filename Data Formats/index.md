@@ -122,7 +122,7 @@ John Doe,30,true
 
 ## XML
 
-- **Created:** 1996 by the W3C.
+- **Created:** Development started 1996 by the W3C; XML 1.0 published as a W3C Recommendation on February 10, 1998.
 - **Ownership & License:** W3C Open Standard.
 - **Is it type safe:** No (requires XSD or DTD for validation).
 - **Is it serializable:** Yes.
@@ -164,7 +164,7 @@ Person {
 
 - **Created:** 2013 by Tom Preston-Werner (co-founder of GitHub).
 - **Ownership & License:** Open Standard; MIT License.
-- **Is it type safe:** No (dynamically typed, but supports explicit types like integers, floats, booleans, dates).
+- **Is it type safe:** Yes (statically typed; every value has an explicit type enforced at parse time — string, integer, float, boolean, datetime, array, inline table).
 - **Is it serializable:** Yes.
 - **Human Readable:** Yes (designed to be "minimal" and easy to read).
 - **Format:** Text.

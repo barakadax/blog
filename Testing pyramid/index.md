@@ -50,7 +50,7 @@ Similar to unit testing, validates entire application flows while mocking all ex
 
 ### Mutation testing
 Automatically introduces small algorithmic modifications ("mutations") into your code to see if your existing tests fail.
-It identifies breaking changes the fastest and reveals missed test cases.
+It evaluates the quality and effectiveness of your test suite — if a mutation survives (tests still pass), you have a gap in coverage.
 
 ### Integration testing
 Tests how multiple separated components or microservices interact.

@@ -8,7 +8,7 @@
 ## What it is
 
 Wake-On-Lan (WOL) is a feature that allows a computer to be turned on (woken up) from a remote location using a network message.
-It works on shut down and sleep mode.
+It works on shut down, sleep, and hibernate mode.
 
 ## Why would I want it enabled
 

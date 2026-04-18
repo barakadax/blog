@@ -1,0 +1,18 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-04-18",
+    "level": "Intermediate",
+    "tags": [
+        "deserialization",
+        "data format",
+        "binary",
+        "protocol buffers",
+        "grpc",
+        "schema",
+        "microservices",
+        "performance",
+        "efficiency",
+        "hexadecimal"
+    ],
+    "share_text": "Why is Protobuf 3x smaller than JSON? 🤔 Protocol Buffers, discover the binary serialization format powering gRPC and Google's infrastructure! ✨"
+}

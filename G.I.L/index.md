@@ -7,8 +7,9 @@
 
 ## What it is
 
-The Global Interpreter Lock (GIL) is a **mutex** (mutual exclusion lock) for interpreters to synchronize the execution of threads,
+The Global Interpreter Lock (GIL) is a **mutex** (mutual exclusion lock) found in some interpreter implementations to synchronize the execution of threads,
 Preventing multiple native threads from executing bytecode at the same time within a single process.
+The GIL is an implementation-level design choice — not every implementation of a language uses one.
 
 ## Why we need it
 
