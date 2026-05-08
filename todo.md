@@ -6,7 +6,6 @@
 - minus and upper is faster,
 - grpc,
 - map reduce (orleans as example),
-- orleans vs akka vs pecco,
 - async vs sync,
 - hash vs encryption,
 - fluent interface,

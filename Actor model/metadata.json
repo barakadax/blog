@@ -1,0 +1,33 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-05-08",
+  "level": "Advanced",
+  "tags": [
+    "Distributed Systems",
+    "Concurrency libraries",
+    "Multithreading",
+    "Asynchronous Programming",
+    "Compute resources",
+    "Heavy load",
+    "Cloud Computing",
+    "Virtual Actors",
+    "Shared State",
+    "Deadlocks",
+    "Scalability Issues",
+    "Fault Tolerance",
+    "MapReduce",
+    "Microsoft Orleans",
+    "Akka",
+    "Actix",
+    "Pekko",
+    "Proto.Actor",
+    "Dapr",
+    "Ray",
+    "CAF",
+    "Nact",
+    "Bastion",
+    "Comedy",
+    "C# Rust Python Golang Scala Java SpringBoot Elixir Erlang"
+  ],
+  "share_text": "Explore about Actor model — how it solves shared state contention and deadlocks, and how Virtual Actors abstract away location transparency and lifecycle management."
+}
