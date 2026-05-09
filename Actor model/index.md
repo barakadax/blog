@@ -47,7 +47,7 @@ The Virtual Actor Model, pioneered by Microsoft Orleans, introduces a higher lev
 | **Lifecycle** | Explicit (Create/Stop) | Managed (Always-on) |
 | **Placement** | Manual/Supervised | Automatic/Transparent |
 | **State** | In-memory (Manual Persistence) | Automatic Persistence/Activation |
-| **Examples** | Akka, Erlang, Actix | Orleans, Dapr, Proto.Actor |
+| **Examples** | Akka, Pekko, Erlang, Actix | Orleans, Dapr, Proto.Actor, Darlean |
 
 ## Virtual Actor Examples
 
@@ -72,3 +72,4 @@ By leveraging Orleans Grains:
 - [Proto.actor](https://asynkron.se/docs/protoactor/what-is-protoactor/)
 - [Actix](https://actix.rs/docs/actix/actor/)
 - [Pekko](https://pekko.apache.org/)
+- [Darlean](https://darlean.io/)
