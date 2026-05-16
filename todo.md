@@ -18,7 +18,7 @@
 - little big endian,
 - queues and when (also queues as DB),
 - Win vs Linux memory,
-- When and why k8s and docker/podman,
+- Containerization,
 - C.R.U.D,
 - ODataV4,
 - reflection,

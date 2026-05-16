@@ -1,0 +1,19 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-05-16",
+  "level": "Intermediate",
+  "tags": [
+    "Strategies",
+    "DevOps",
+    "Microservices",
+    "CI/CD CICD",
+    "Release Management",
+    "Reliability",
+    "Fault Tolerance",
+    "Testing",
+    "Monitoring",
+    "Cloud",
+    "blue green"
+  ],
+  "share_text": "Deploy with confidence! 🚀 Discover Ring Deployment: The risk-minimizing, staged release strategy for bulletproof software rollouts in complex microservice architectures."
+}

@@ -5,6 +5,8 @@
 - [Types of tests](#types-of-tests)
   - [Unit testing](#unit-testing)
   - [Functional testing](#functional-testing)
+  - [Smoke testing](#smoke-testing)
+  - [Sanity testing](#sanity-testing)
   - [Mutation testing](#mutation-testing)
   - [Integration testing](#integration-testing)
   - [Contract testing](#contract-testing)
@@ -52,6 +54,22 @@ These are the fastest to execute, and you are expected to have the most of them.
 Similar to unit testing, validates entire application flows while mocking all external dependencies, focusing purely on verifying functional business logic.
 
 - **Measurement:** **Requirement Coverage** — ensures every business rule is mapped to a test case.
+- **Quality Indicator:** All "happy paths" and common edge cases are validated against the specification.
+
+### Smoke testing
+In comparison to unit and functional tests, smoke tests are feature-based.
+They consist of a smaller suite of tests that guarantees core feature functionality.
+Smoke tests often use stubbed external dependencies that simulate the real world rather than mocking in total isolation.
+They are typically run by developers during local development and in CI/CD pipelines after deployment to validate that the build is stable.
+
+- **Measurement:** **Feature Coverage** — ensures every feature is working as expected.
+- **Quality Indicator:** All "happy paths" and common edge cases are validated against the specification.
+
+### Sanity testing
+Cherry-picking a subset of critical unit, functional, and smoke tests, bundled into a sanity suite that runs faster than running all of the unit, functional and smoke tests.
+It is typically used to verify that specific bug fixes or changes work as intended.
+
+- **Measurement:** **Feature Coverage** — ensures every feature is working as expected.
 - **Quality Indicator:** All "happy paths" and common edge cases are validated against the specification.
 
 ### Mutation testing
@@ -109,6 +127,12 @@ The practice of intentionally killing services and dependencies during runtime, 
 - **Measurement:** **Availability %** and **Recovery Time Objective (RTO)**.
 - **Quality Indicator:** The system stays online or self-heals automatically without manual intervention when a dependency fails.
 
+> [!NOTE]
+> Unit, functional, smoke and mutation testing should indicate regression in development.
+> Sanity testing should indicate regression in CICD before deployment.
+> Integration, contract and E2E testing should indicate regression in runtime after deployment.
+> Load and performance testing should indicate degradation in runtime after deployment.
+
 ## Recommended programs and tools
 
 - **Coverage:** Tools like [JaCoCo](https://www.jacoco.org/jacoco/) (Java), [coverage.py](https://coverage.readthedocs.io/) (Python) and [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/) (Python) provide detailed line and branch coverage reports.
@@ -133,3 +157,5 @@ The practice of intentionally killing services and dependencies during runtime, 
 - [Pact](https://docs.pact.io/)
 - [Locust](https://locust.io/)
 - [Chaos monkey](https://netflix.github.io/chaosmonkey/)
+- [Smoke test](https://en.wikipedia.org/wiki/Smoke_testing_(software))
+- [Sanity test](https://en.wikipedia.org/wiki/Sanity_check)
