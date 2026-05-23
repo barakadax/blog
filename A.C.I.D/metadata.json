@@ -1,0 +1,19 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-05-23",
+    "level": "Intermediate",
+    "tags": [
+        "acid",
+        "database",
+        "transaction",
+        "data integrity",
+        "backend",
+        "sql",
+        "nosql",
+        "patterns",
+        "best practices",
+        "design",
+        "actor model"
+    ],
+    "share_text": "Demystifying ACID transactions! Learn how databases guarantee data integrity with Atomicity, Consistency, Isolation, and Durability. 💾✨"
+}

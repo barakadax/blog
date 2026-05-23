@@ -5,7 +5,6 @@
 - why you should never write backend server in NodeJS,
 - minus and upper is faster,
 - grpc,
-- map reduce (orleans as example),
 - async vs sync,
 - hash vs encryption,
 - fluent interface,
@@ -19,10 +18,8 @@
 - queues and when (also queues as DB),
 - Win vs Linux memory,
 - Containerization,
-- C.R.U.D,
 - ODataV4,
 - reflection,
-- decorators,
 - training models simplified,
 - RAG,
 - Onion + garlic Routing
@@ -44,7 +41,6 @@
 - race conditions
 - API Architectural Styles
 - Network Security and Access Solutions
-- ACID
 - Dynamic programming
 - Shortening URL
 - BFS vs DFS
