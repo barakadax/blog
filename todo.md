@@ -26,7 +26,6 @@
 - RT VS NRT and when,
 - stateful vs stateless,
 - async encryption (RSA),
-- Diffie-Hellman,
 - man in the middle attack,
 - CPU Scheduling,
 - real random (example lava lamp room),
