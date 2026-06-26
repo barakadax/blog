@@ -1,0 +1,15 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-06-26",
+    "level": "Intermediate",
+    "tags": [
+        "design patterns",
+        "oop",
+        "functional programming",
+        "best practices",
+        "csharp",
+        "python",
+        "rust"
+    ],
+    "share_text": "Want to wrap your functions or objects with extra behaviors without altering their core code? 🍦 Check out this simple guide on the Decorator Pattern ✨"
+}

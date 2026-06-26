@@ -11,7 +11,6 @@
 - consistent hashing,
 - C# Polly,
 - Tail os and other private untraceable OS and why,
-- Game of life,
 - dependencies injection,
 - Inversion of control,
 - little big endian,
