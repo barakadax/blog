@@ -10,6 +10,7 @@
   - [Mutation testing](#mutation-testing)
   - [Integration testing](#integration-testing)
   - [Contract testing](#contract-testing)
+  - [Migration testing](#migration-testing)
   - [End to End testing](#end-to-end-testing)
   - [Performance testing](#performance-testing)
   - [Load testing](#load-testing)
@@ -93,6 +94,13 @@ It validates that your APIs and the external APIs you interact with continue to 
 - **Measurement:** **Schema Compliance Rate**.
 - **Quality Indicator:** 100% agreement between Consumer and Provider contracts, preventing breaking changes.
 
+### Migration testing
+Validates that database schema changes or data migration processes (porting data/configurations from old to new structures or systems) execute successfully.
+It ensures data integrity is preserved, database constraints are not violated, no data is lost or corrupted.
+
+- **Measurement:** **Migration Success Rate**, **Data Drift/Loss Rate** (verifying source and target parity), and **Rollback Success Rate**.
+- **Quality Indicator:** Zero database integrity or constraint violations, zero lost/corrupted records, and validated rollback scripts.
+
 ### End to End testing
 Validates the entire expected flow from a user's perspective (happy path), from start to finish without mocked dependencies.
 Since these tests are slow and prone to flakiness, you should have the fewest of them, running them typically on a schedule basis.
@@ -130,7 +138,7 @@ The practice of intentionally killing services and dependencies during runtime, 
 > [!NOTE]
 > Unit, functional, smoke and mutation testing should indicate regression in development.
 > Sanity testing should indicate regression in CICD before deployment.
-> Integration, contract and E2E testing should indicate regression in runtime after deployment.
+> Integration, contract, migration and E2E testing should indicate regression in runtime or deployment phases.
 > Load and performance testing should indicate degradation in runtime after deployment.
 
 ## Recommended programs and tools
@@ -138,6 +146,7 @@ The practice of intentionally killing services and dependencies during runtime, 
 - **Coverage:** Tools like [JaCoCo](https://www.jacoco.org/jacoco/) (Java), [coverage.py](https://coverage.readthedocs.io/) (Python) and [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/) (Python) provide detailed line and branch coverage reports.
 - **Mutation:** Each programming language has its unique tooling. For example, Python uses [`mutmut`](https://github.com/boxed/mutmut) and Java uses [Pitest](https://pitest.org/).
 - **Contract:** [Pact](https://docs.pact.io/) is an industry standard that supports multiple languages for robust contract testing.
+- **Migration:** [Liquibase](https://www.liquibase.org/) and [Flyway](https://flywaydb.org/) help version and manage database schema migrations, whereas tools like [Great Expectations](https://greatexpectations.io/) or integration test suites utilizing [Testcontainers](https://testcontainers.com/) validate data integrity before and after migration.
 - **Performance:** **Flame graphs** intuitively visualize code execution duration. Rust, for example, has [`flamegraph-rs`](https://github.com/flamegraph-rs/flamegraph).
 - **Load:** [Locust](https://locust.io/) is a Python tool that allows local and distributed API spamming (REST, gRPC, GraphQL) across multiple nodes. [k6](https://k6.io/) is another widely praised modern alternative.
 - **Chaos:** [Chaos Monkey](https://netflix.github.io/chaosmonkey/), developed by Netflix, performs random instance termination—doing exactly what it promises even on live production environments.
@@ -159,3 +168,6 @@ The practice of intentionally killing services and dependencies during runtime, 
 - [Chaos monkey](https://netflix.github.io/chaosmonkey/)
 - [Smoke test](https://en.wikipedia.org/wiki/Smoke_testing_(software))
 - [Sanity test](https://en.wikipedia.org/wiki/Sanity_check)
+- [Migration testing (Wikipedia)](https://en.wikipedia.org/wiki/Migration_testing)
+- [Liquibase](https://www.liquibase.org/)
+- [Flyway](https://flywaydb.org/)
