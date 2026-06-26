@@ -1,0 +1,16 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-06-26",
+    "level": "Intermediate",
+    "tags": [
+        "conway",
+        "python",
+        "tkinter",
+        "simulation",
+        "cellular automata",
+        "gui",
+        "algorithms",
+        "visualization"
+    ],
+    "share_text": "How does Conway's Game of Life work? 🦠 Discover this Python Tkinter implementation that evaluates cells in-place with colorful visualizations! 🎨✨"
+}
