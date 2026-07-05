@@ -1,0 +1,15 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-05",
+    "level": "Advanced",
+    "tags": [
+        "operating systems",
+        "algorithms",
+        "process management",
+        "kernel",
+        "concurrency",
+        "real time systems",
+        "IO"
+    ],
+    "share_text": "Ever wondered why you computer froze? learn how processes are scheduled! 🚀💻"
+}

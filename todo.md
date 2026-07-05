@@ -16,7 +16,6 @@
 - little big endian,
 - queues and when (also queues as DB),
 - Win vs Linux memory,
-- Containerization,
 - ODataV4,
 - reflection,
 - training models simplified,
@@ -26,9 +25,8 @@
 - stateful vs stateless,
 - async encryption (RSA),
 - man in the middle attack,
-- CPU Scheduling,
 - real random (example lava lamp room),
-- what is a process and what is a thread (Python examples),
+- what is a process and what is a thread (Python examples)
 - plain-language test scenarios in a common language (Gherkin)
 - memory allocation and syntax differences char char int vs char int char,
 - ansi C lang bitwise vs struct,

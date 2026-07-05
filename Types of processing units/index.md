@@ -128,4 +128,3 @@ Two fundamental design philosophies:
 - [Quantum Processing Unit](https://en.wikipedia.org/wiki/Quantum_computing)
 - [Instruction Set Architecture](https://en.wikipedia.org/wiki/Instruction_set_architecture)
 - [System on a Chip](https://en.wikipedia.org/wiki/System_on_a_chip)
-
