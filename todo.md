@@ -17,7 +17,6 @@
 - queues and when (also queues as DB),
 - Win vs Linux memory,
 - ODataV4,
-- reflection,
 - training models simplified,
 - RAG,
 - Onion + garlic Routing
@@ -35,7 +34,6 @@
 - syn flood
 - encoding
 - race conditions
-- API Architectural Styles
 - Network Security and Access Solutions
 - Dynamic programming
 - Shortening URL
