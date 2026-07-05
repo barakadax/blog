@@ -1,0 +1,17 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-05",
+    "level": "Intermediate",
+    "tags": [
+        "api gateway",
+        "bff",
+        "architecture",
+        "routing",
+        "backend",
+        "cloud native",
+        "service mesh",
+        "k8s kubernetes",
+        "design"
+    ],
+    "share_text": "How do users connect to microservices? Let's break down API Gateways, BFFs, and Service Meshes with simple real-world analogies! 🚀🚪"
+}

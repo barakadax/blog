@@ -13,7 +13,7 @@ Data structure is a specialized format for organizing, processing, and storing d
 ## Why do we need data structures?
 
 Data structures serves as blueprints for how information is arranged in computer memory to solve specific problems.
-For example seaching values or managing hierarchy.
+For example searching values or managing hierarchy.
 
 ## Types of data structures
 
@@ -39,6 +39,12 @@ They are used to store multiple values and can be categorized based on how they 
 
 #### Linear Data Structures
 In linear data structures, elements are arranged in a sequence, and each element is connected to its previous and next element.
+
+Depending on how elements are stored and retrieved, they generally follow specific access and ordering paradigms:
+- **Direct Access**: Allows accessing any element instantly in $O(1)$ time using its index or key, without traversing other elements (e.g., **Array**, **Matrix**, **Dynamic Array**, **String**, **Tuple**).
+- **Sequential / Indirect Access**: Requires traversing through other elements in order to reach a specific one (e.g., **Linked Lists**).
+- **LIFO (Last-In-First-Out)**: A retrieval principle where the last element inserted is the first one to be removed (e.g., **Stack**).
+- **FIFO (First-In-First-Out)**: A retrieval principle where the first element inserted is the first one to be removed (e.g., **Queue**).
 
 ##### Direct Access
 These allow accessing elements directly using an index or key:
