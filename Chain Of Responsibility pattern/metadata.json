@@ -1,0 +1,21 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-12",
+    "level": "Intermediate",
+    "tags": [
+        "software design",
+        "behavioral",
+        "c#",
+        "python",
+        "rust",
+        "clean code",
+        "middleware",
+        "dynamic routing",
+        "decoupled handlers",
+        "request failure handling",
+        "REST api",
+        "event-driven architecture",
+        "microservices services"
+    ],
+    "share_text": "Master the Chain of Responsibility pattern! Learn how to dynamically route requests, handle failures gracefully, and write clean, decoupled handlers. ⛓️💻"
+}
