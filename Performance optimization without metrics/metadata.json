@@ -1,0 +1,18 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-13",
+    "level": "Intermediate",
+    "tags": [
+        "observability",
+        "complexity",
+        "hashmap",
+        "array",
+        "data structures",
+        "dashboards",
+        "complexity analysis",
+        "O notation",
+        "ROI",
+        "AI tokens"
+    ],
+    "share_text": "Is O(1) always better than O(N) change in exiting working code? 🚀 Why optimizing without metrics is a shot in the dark, and how a simple API lookup change proved it. 📈"
+}
