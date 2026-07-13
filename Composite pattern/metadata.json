@@ -1,0 +1,15 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-13",
+    "level": "Intermediate",
+    "tags": [
+        "design",
+        "oop",
+        "csharp",
+        "data structural",
+        "recursive",
+        "tree",
+        ""
+    ],
+    "share_text": "Tired of treating leaf nodes and group containers differently in your code? 🌳 Learn how the Composite Pattern simplifies tree structures ✨"
+}
