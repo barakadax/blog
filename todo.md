@@ -16,7 +16,6 @@
 - little big endian,
 - queues and when (also queues as DB),
 - Win vs Linux memory,
-- ODataV4,
 - training models simplified,
 - RAG,
 - Onion + garlic Routing

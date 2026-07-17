@@ -8,7 +8,7 @@
 ## The Scenario
 
 We had a system with the following setup:
-1. A background cronjob runs every $X$ minutes, fetches unsorted products data for multiple customers from the database, and stores it in an in-memory array.
+1. A background scheduled job runs every $X$ minutes, fetches unsorted products data for multiple customers from the database, and stores it in an in-memory array.
 2. An API endpoint allows customers to query their products.
 3. Every time the API is called, it performs an $O(N)$ linear search on the array to filter and return the customer's items.
 
@@ -17,8 +17,8 @@ We had a system with the following setup:
 ## The AI-Suggested Optimization
 
 To improve runtime complexity, an AI coding assistant suggested two changes:
-1. **Push Sorting to the DB:** Add an `ORDER BY` clause to the SQL query executed by the cronjob.
-2. **Use a Hash Map:** Convert the in-memory array to a Hash Map (`Dictionary<CustomerId, List<Product>>`) during the cronjob execution.
+1. **Push Sorting to the DB:** Add an `ORDER BY` clause to the SQL query executed by the scheduled job.
+2. **Use a Hash Map:** Convert the in-memory array to a Hash Map (`Dictionary<CustomerId, List<Product>>`) during the scheduled job execution.
 
 Building the Hash Map is a single $O(N)$ pass during the cron run.
 In return, each subsequent API call gets its data in $O(1)$ constant time.

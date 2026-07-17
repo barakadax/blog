@@ -1,0 +1,23 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-07-17",
+    "level": "Intermediate",
+    "tags": [
+        "architecture",
+        "rest",
+        "graphql",
+        "grpc",
+        "websockets",
+        "sse",
+        "webhooks",
+        "kafka redpanda",
+        "socket",
+        "communication protocols",
+        "layer 7 application",
+        "microservices",
+        "internet ethernet",
+        "temporal",
+        "system design"
+    ],
+    "share_text": "Discover different API architectural styles, from REST and GraphQL to gRPC, WebSockets, Pub/Sub, and Event-Driven systems! 🔌🌐"
+}
