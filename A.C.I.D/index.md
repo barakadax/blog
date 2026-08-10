@@ -28,7 +28,7 @@ It guarantees that database invariants are never violated.
 Isolation ensures that concurrent transactions execute without interfering with each other.
 The intermediate state of a transaction is invisible to other concurrent transactions, producing the same database state as if they were executed sequentially.
 
-*Example:* If User A attempts to withdraw $50 from a shared account with a $60 balance, they enter an intermediate state where the database calculates the new balance ($10) but hasn't finalized (committed) the change yet.
+*Example:* If User A attempts to withdraw 50 from a shared account with a 60 balance, they enter an intermediate state where the database calculates the new balance ($10) but hasn't finalized (committed) the change yet.
 Database isolation ensures that if User B checks the account balance at that exact time, they will either see the original $60 or be forced to wait until User A finishes.
 User B will never see an intermediate, uncommitted "temporary" state, preventing them from making decisions based on data that might roll back.
 
