@@ -1,0 +1,18 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-08-15",
+  "level": "Advanced",
+  "tags": [
+    "Strategies",
+    "Scalar",
+    "SIMD",
+    "low level",
+    "parallelization",
+    "calculation",
+    "optimization",
+    "performance",
+    "data",
+    "processing units"
+  ],
+  "share_text": "Running calculations in parallel on vast amounts of data is a common requirement in many applications. This article explores the concept of Single Instruction Multiple Data (SIMD) and how it can be leveraged to optimize performance in computational tasks 🚀"
+}

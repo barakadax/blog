@@ -13,7 +13,7 @@
 
 ## What is the gossip protocol?
 
-Gossip is a decentralized, peer-to-peer multicast protocol for sharing information between nodes in a distributed system. 
+Gossip is a decentralized, peer-to-peer multicast protocol for sharing information between nodes in a distributed system.
 Just like an epidemic spreads from person to person, the gossip protocol spreads information from node to node through random peer selection. It is designed to ensure **eventual consistency** and high **fault tolerance**.
 
 ## How does it work?
