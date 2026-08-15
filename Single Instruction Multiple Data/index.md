@@ -51,6 +51,7 @@ void add_simd(float* A, float* B, float* C, int count) {
         C[i] = A[i] + B[i];
     }
 }
+
 /*
  * Register Bit Widths (Single-Precision Floats):
  * 128-bit (SSE): 4 floats per cycle (__m128)
