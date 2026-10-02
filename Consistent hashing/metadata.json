@@ -1,0 +1,20 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-10-01",
+    "level": "Intermediate",
+    "tags": [
+        "distributed systems",
+        "caching",
+        "kubernetes k8s",
+        "service discovery",
+        "microsoft orleans",
+        "dotnet csharp",
+        "algorithms",
+        "architecture",
+        "scalability",
+        "actor model",
+        "virtual nodes",
+        "C# sharp  microsoft orleans"
+    ],
+    "share_text": "How do distributed systems scale without stampeding databases? Dive into Consistent Hashing! 🔄⚡"
+}

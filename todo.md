@@ -8,7 +8,6 @@
 - async vs sync,
 - hash vs encryption,
 - fluent interface,
-- consistent hashing,
 - C# Polly,
 - Tail os and other private untraceable OS and why,
 - dependencies injection,
