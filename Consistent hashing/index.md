@@ -39,7 +39,7 @@ While effective in static clusters, this strategy breaks down when $N$ changes:
 ```
 
 * **Placement:** A hash function (e.g., MurmurHash3 or xxHash) places nodes and incoming data keys at specific coordinates along the ring.
-* **Routing:** A key is assigned to the first node encountered moving **clockwise** ($\text{node\_hash} \ge \text{key\_hash}$), if a key's hash exceeds all nodes, it wraps around past $0$ to the first node.
+* **Routing:** A key is assigned to the first node encountered moving **clockwise** (\text{node\_hash} \ge \text{key\_hash}), if a key's hash exceeds all nodes, it wraps around past $0$ to the first node.
 * **Scale Invariance:** Adding or removing a node only impacts keys between the target node and its immediate predecessor. On average, only **$K / N$** keys move ($K$ total keys, $N$ nodes), leaving the remaining $1 - 1/N$ of keys intact.
 
 ### Virtual Nodes
