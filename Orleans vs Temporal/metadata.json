@@ -1,0 +1,20 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-10-02",
+  "level": "Intermediate",
+  "tags": [
+    "Distributed Systems",
+    "Microsoft C#",
+    "Stateful stateless",
+    "Virtual Actors",
+    "Workflow Orchestration",
+    "Durable Execution",
+    "Microservices",
+    "High Throughput",
+    "Scalability",
+    "Fault Tolerance",
+    "Event driven",
+    "databases db"
+  ],
+  "share_text": "Understand when to choose Microsoft Orleans for high-speed in-memory virtual actors and when to choose Temporal for durable distributed workflows ✌️😎"
+}
