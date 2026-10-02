@@ -26,7 +26,7 @@ While effective in static clusters, this strategy breaks down when $N$ changes:
 
 ## Consistent Hashing and the Hash Ring
 
-**Consistent Hashing** maps both **data keys** and **node identifiers** onto a shared circular $2^{32}-1$ (or $2^{64}-1$) unique collection called the **Hash Ring**.
+**Consistent Hashing** maps both **data keys** and **node identifiers** onto a shared circular 2^{32}-1 (or 2^{64}-1) unique collection called the **Hash Ring**.
 
 ```text
                Node A (Hash: 100)
