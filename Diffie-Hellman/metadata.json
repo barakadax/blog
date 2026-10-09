@@ -1,0 +1,19 @@
+{
+    "author": "Barak Taya",
+    "date": "2026-10-10",
+    "level": "Intermediate",
+    "tags": [
+        "cryptography",
+        "security",
+        "key exchange",
+        "mtls",
+        "handshake",
+        "perfect forward secrecy",
+        "authentication",
+        "communication",
+        "networking",
+        "public private key",
+        "asymmetric encryption"
+    ],
+    "share_text": "How do two strangers establish a shared secret over a public network without eavesdroppers cracking it? 🔐 Dive into Diffie-Hellman Key Exchange!"
+}
