@@ -1,0 +1,20 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-10-09",
+  "level": "Intermediate",
+  "tags": [
+    "Distributed Systems",
+    "Microservices",
+    "Event driven",
+    "Kafka redpanda pubsub rabbitmq queue",
+    "Databases",
+    "ACID",
+    "Reliability",
+    "Architecture",
+    "Debezium",
+    "transactional",
+    "cloud k8s kubernetes",
+    "persistency"
+  ],
+  "share_text": "Tired of dual-write failures and lost events? Master the Transactional Outbox Pattern, CDC with Debezium, and the realities of distributed exactly-once delivery 📦🚀"
+}

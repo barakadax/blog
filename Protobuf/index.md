@@ -7,6 +7,7 @@
   - [Serialize and deserialize](#serialize-and-deserialize)
   - [Wire format](#wire-format)
 - [Where is it used](#where-is-it-used)
+- [Zero-Copy Serialization & Heap Allocation Realities](#zero-copy-serialization--heap-allocation-realities)
 - [Compare](#compare)
 - [Sources](#sources)
 
@@ -149,6 +150,43 @@ Unknown fields (tags the reader's schema doesn't recognize) are preserved, enabl
 - **Kubernetes**: API machinery and etcd storage use Protobuf for internal serialization.
 - **Mobile and IoT**: Compact size and fast parsing make it practical on bandwidth- or CPU-constrained devices.
 - **Big data**: Used as a storage and transport format in pipelines alongside Avro and Parquet.
+
+## Zero-Copy Serialization & Heap Allocation Realities
+
+While Protobuf is significantly more compact and CPU-efficient than JSON or XML, it is **not a zero-copy format**.
+
+### Why Protobuf Allocates on the Heap
+
+During deserialization (`ParseFromString()` / `parseFrom()`):
+1. **Object Instantiation:** The deserializer allocates heap objects for the message and all nested message instances.
+2. **String and Byte Duplication:** Strings and `bytes` fields are decoded from the wire buffer and allocated as new heap memory buffers (e.g., standard heap `std::string`, `java.lang.String`, or Python objects).
+3. **Repeated Fields Expansion:** Dynamic arrays (`repeated`) incur slice/vector reallocation overhead as elements are appended.
+
+In ultra-high-throughput environments (e.g., millions of messages per second in streaming telemetry, kernel-to-user space IPC, or high-frequency trading), this creates heavy **Garbage Collection (GC) pauses** in managed languages (Java, C#, Go) and allocator contention in C++/Rust.
+
+### When Zero-Copy is Non-Negotiable
+
+Alternative binary protocols like **FlatBuffers** and **Cap'n Proto** solve this by laying out data in memory exactly as it will exist on the wire:
+- **No Deserialization Pass:** Accessing a field reads directly from the raw byte buffer using offset pointer calculations (pointer swizzling / internal vtables).
+- **Direct Memory Mapping (`mmap`):** FlatBuffers can be directly memory-mapped from disk or read straight out of shared memory or network sockets without touching the heap.
+
+```text
+Protobuf Deserialization:
+[ Wire Bytes in Network Buffer ]
+               │
+               ▼  (CPU parsing + Heap Allocations)
+[ Heap Object ] ───> [ Heap String ] ───> [ Heap Vector ]
+
+Zero-Copy (FlatBuffers / Cap'n Proto):
+[ Wire Bytes / mmap Buffer ] <─── Direct pointer offset read (0 allocations)
+```
+
+| Trait | Protobuf | FlatBuffers / Cap'n Proto |
+| :--- | :--- | :--- |
+| **Deserialization Step** | Required (traverses and builds objects) | None (reads in-place from buffer) |
+| **Heap Allocations** | Allocates objects, strings, arrays | Zero heap allocations on read |
+| **Wire Footprint** | Extremely compact (varint compression) | Slightly larger (padding for memory alignment) |
+| **Ideal Use Cases** | Microservices, gRPC, RPC over WAN | Game state sync, IPC, shared memory, high-speed telemetry |
 
 ## Compare
 

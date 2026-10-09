@@ -5,7 +5,8 @@
 4. [Virtual Actor Model](#virtual-actor-model)
 5. [Traditional vs. Virtual](#traditional-vs-virtual)
 6. [Technical Showcase: OrleansMapReduce](#technical-showcase-orleansmapreduce)
-7. [Sources](#sources)
+7. [Mailbox Saturation & Backpressure Mechanisms](#mailbox-saturation--backpressure-mechanisms)
+8. [Sources](#sources)
 
 ## What is the Actor Model
 
@@ -63,12 +64,46 @@ By leveraging Orleans Grains:
 - **Resilience:** If a node failing during a Map task, the Virtual Actor runtime ensures the task can be resumed or retried seamlessly.
 - **Scalability:** It abstracts the complexity of coordination, allowing developers to focus on the business logic of the MapReduce algorithm.
 
+## Mailbox Saturation & Backpressure Mechanisms
+
+In the pure theoretical Actor Model, each actor has an unbounded FIFO mailbox.
+In real production deployments, unbounded mailboxes are one of the most common causes of silent, catastrophic system failures.
+
+### The Problem: Unbounded Mailboxes and OOM Crashes
+
+If producer actors send messages faster than a consumer actor can process them, the consumer's mailbox queue grows indefinitely in RAM.
+- **Cascading Memory Exhaustion (OOM):** The process exhausts its heap, triggering GC thrashing followed by the OS kernel OOM killer terminating the process.
+- **Latency Spikes:** Even if the process does not crash, messages sit in the queue for seconds or minutes before being picked up, rendering responses stale or timed out.
+
+### Production Mitigation Strategies
+
+```text
+Message Inflow (10,000 msg/s) ───> [ █ █ █ █ █ █ █ █ ] Mailbox Buffer (Max: 1,000)
+                                            │
+               ┌────────────────────────────┴───────────────────────────┐
+               ▼                                                        ▼
+      [ Drop / Dead-Letter ]                                [ Reactive Pull / Backpressure ]
+  (Drop Oldest / Drop Newest)                               (Slows down upstream sender)
+```
+
+1. **Bounded Mailboxes:**
+   Imposing a hard limit on mailbox capacity (e.g., max 10,000 messages). When the mailbox fills up:
+   * **Drop Newest / Drop Oldest:** Discard either newly arrived messages or the oldest unprocessed messages (common in loss-tolerant real-time metric or telemetry feeds).
+   * **Dead-Letter Routing:** Route overflow messages to a dead-letter office or durable disk queue for debugging and deferred re-delivery.
+   * **Reject / Fail-Fast:** Immediately return an error (`MailboxOverflowException`) back to the sender so the caller can back off.
+
+2. **Pull-Based Flow Control & Orleans Grain Filters:**
+   Instead of unrestricted fire-and-forget message flooding, production Orleans systems enforce flow control:
+   * **`ResponseTimeout` Fail-Fast:** Orleans tracks message wait time in each Grain's activation queue, if a grain is overwhelmed and an incoming call exceeds the configured timeout, Orleans throws a `TimeoutException`, failing fast and freeing caller resources rather than accumulating memory indefinitely.
+   * **Load Shedding via `IIncomingGrainCallFilter`:** Incoming grain call filters can inspect current silo CPU pressure or per-grain queue depth, when thresholds are breached, the filter rejects requests immediately before they enter the grain's execution queue.
+   * **Pull-Based Streams & Bounded Channels:** Instead of pushing messages directly to grains, architectures leverage pull-based stream subscriptions (e.g., Orleans persistent stream providers reading from Kafka) or .NET `System.Threading.Channels` with bounded capacities (`BoundedChannelFullMode.Wait`), ensuring consumers only pull work when the grain completes its current turn.
+
 ## Sources
 
 - [Microsoft Orleans Documentation](https://learn.microsoft.com/en-us/dotnet/orleans/)
 - [The Actor Model (Wikipedia)](https://en.wikipedia.org/wiki/Actor_model)
 - [Dapr Actors Building Block](https://docs.dapr.io/developing-applications/building-blocks/actors/actors-overview/)
-- [Akka Documentation](https://akka.io/docs/)
+- [Microsoft Orleans Streaming](https://learn.microsoft.com/en-us/dotnet/orleans/streaming/)
 - [Proto.actor](https://asynkron.se/docs/protoactor/what-is-protoactor/)
 - [Actix](https://actix.rs/docs/actix/actor/)
 - [Pekko](https://pekko.apache.org/)

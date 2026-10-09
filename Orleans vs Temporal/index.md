@@ -5,6 +5,7 @@
 - [Decision Tree: When to Use What](#decision-tree-when-to-use-what)
 - [Can They Be Used Together?](#can-they-be-used-together)
 - [Comparison Matrix](#comparison-matrix)
+- [Production Failure Modes: Replay Storms vs Split-Brain Silos](#production-failure-modes-replay-storms-vs-split-brain-silos)
 - [Sources](#sources)
 
 ## Core Paradigm Difference
@@ -120,6 +121,43 @@ Orleans and Temporal are complementary. A common distributed architecture combin
 | **Concurrency Rule** | Turn-based single-threaded execution per Grain | Deterministic workflow execution with concurrent activities |
 | **Multi core Scaling** | Fully parallel across all CPU cores via .NET ThreadPool | Polyglot worker pools horizontally scaled |
 | **Language Support** | C# / .NET | Polyglot (C#, Go, TypeScript, Java, Python) |
+
+## Production Failure Modes: Replay Storms vs Split-Brain Silos
+
+Engineering high-availability distributed systems requires preparing for partial failures, network partitions, and poison pills.
+Orleans and Temporal fail in completely different ways:
+
+### Temporal: Replay Storms, Poison Pills, and Versioning Drift
+
+1. **Non-Deterministic Version Drift:**
+Workflows must be strictly deterministic.
+If developer code changes (e.g., adding an `if` condition or an extra activity call) without using Temporal's `Workflow.getVersion()` API, running workflows that encounter the new code during replay will fail with a `NonDeterministicWorkflowError`.
+In-flight executions can be bricked permanently.
+
+2. **Event History Bloat & Replay Storms:**
+Every workflow step appends events to the history log.
+If a long-running workflow exceeds thousands of events without calling `continueAsNew()`, replaying the event history on worker restart becomes compute-intensive.
+When workers crash simultaneously, hundreds of workflows replaying massive histories can cause CPU saturation and worker starvation (a "replay storm").
+
+3. **Poison Pill Activities:**
+Temporal retries failed activities indefinitely by default with exponential backoff.
+Malformed input or unhandled edge case causing an unexpected exception will lock workflow progress indefinitely unless non-retryable error types (`ApplicationFailure.newNonRetryableFailure`) or dead-letter queues are configured.
+
+### Microsoft Orleans: Split-Brain Clusters, Membership Convergence, and Hydration Spikes
+
+1. **Silo Membership Convergence & Split-Brain:**
+Orleans clusters maintain active nodes (silos) via a distributed membership protocol backed by a shared membership table (e.g., Azure Tables, Consul, PostgreSQL).
+Under extreme network partitions or GC pauses exceeding the silo heartbeat timeout, silos may falsely suspect each other as dead.
+If quorum is lost, a cluster can experience split-brain where two silos believe they own the same Grain identity, risking concurrent writes to backing persistence.
+
+2. **Cold-Start Hydration Spikes (Thundering Herd):**
+When a silo crashes, all active Grains on that silo are discarded from RAM.
+The next incoming call to each Grain reactivates it on a surviving silo by issuing a `ReadStateAsync()` against the backing store.
+A massive silo death can trigger a thundering herd against the database as thousands of Grains rehydrate concurrently, necessitating distributed caching, activation throttling, or circuit breakers.
+
+3. **Turn-Based Deadlocks via Re-entrance:**
+By default, Grains execute sequentially (turn-based concurrency).
+If Grain A invokes Grain B, and Grain B attempts to call Grain A synchronously before completing, a deadlock occurs unless methods are explicitly decorated with `[AlwaysInterleave]` or grains are marked `[Reentrant]`.
 
 ## Sources
 

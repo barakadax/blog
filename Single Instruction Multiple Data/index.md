@@ -2,6 +2,7 @@
 - [What is SIMD](#what-is-simd)
 - [Where to use it](#where-to-use-it)
 - [Code examples](#code-examples)
+- [Auto-Vectorization Limits and the Bridge to GPU SIMT](#auto-vectorization-limits-and-the-bridge-to-gpu-simt)
 - [Sources](#sources)
 
 ## What is SIMD
@@ -114,6 +115,49 @@ public static void AddSimdCSharp(ReadOnlySpan<float> a, ReadOnlySpan<float> b, S
     }
 }
 ```
+
+## Auto-Vectorization Limits and the Bridge to GPU SIMT
+
+Modern optimizing compilers (LLVM in `clang`/`rustc`, GCC, MSVC) feature **auto-vectorization** that attempt to transform plain scalar loops into vector instructions automatically.
+However, compilers are inherently conservative: they will only vectorize if they can mathematically prove that the transformation will never alter program semantics.
+
+### Why Auto-Vectorization Fails
+
+1. **Pointer Aliasing (Memory Overlap):**
+In C and C++, if two pointers `float* a` and `float* c` could potentially point to overlapping regions in memory, the compiler cannot safely vectorize because writing a vector chunk might overwrite data read by a subsequent iteration.
+* *Remedy:* Use the `restrict` keyword in C/C99 (`float* __restrict a`) to guarantee pointers do not alias.
+In Rust, the borrow checker already guarantees exclusive mutability at compile time (`&[f32]` vs `&mut [f32]`), giving `rustc` strong aliasing guarantees.
+
+2. **Loop-Carried Dependencies (Recurrences):**
+If iteration `i` depends on the outcome of iteration `i - 1` (such as computing a running prefix sum `c[i] = c[i-1] + a[i]`), instructions cannot be computed simultaneously in a single SIMD lane.
+
+3. **Branch Divergence Inside Inner Loops:**
+If the loop body contains conditional logic (`if (a[i] > threshold)`), the hardware SIMD unit cannot take two different code paths at once.
+Compilers must synthesize vector masks (computing both paths and blending results), which can negate performance gains if branches are complex.
+
+4. **Non-Contiguous Memory Access (Gather/Scatter):**
+SIMD operates fastest when data resides contiguously in cache lines (`_mm256_loadu_ps`).
+When traversing pointers to objects (e.g., iterating an array of heap-allocated pointers `Node* nodes[]`), loading disparate memory addresses requires hardware gather instructions (`_mm256_i32gather_ps`), which are significantly slower and cache-unfriendly.
+
+### The Bridge: From CPU SIMD to GPU SIMT
+
+While CPU SIMD packs multiple data lanes into a single wide register on a single CPU core (e.g., 8 floats in an AVX2 256-bit register), modern graphics and AI hardware scale this concept by orders of magnitude via **Single Instruction, Multiple Threads (SIMT)**:
+
+```text
+CPU SIMD (Pipelined Vector Register):
+Core 0: [ Lane 0 | Lane 1 | Lane 2 | Lane 3 | Lane 4 | Lane 5 | Lane 6 | Lane 7 ]  (Single Thread Context)
+
+GPU SIMT (Warp Execution):
+Streaming Multiprocessor:
+├── Thread 0  (PC: instruction_X) ─┐
+├── Thread 1  (PC: instruction_X)  │
+├── ...                           ├──> Executed in lockstep across 32 ALUs (1 Warp)
+└── Thread 31 (PC: instruction_X) ─┘
+```
+
+* **CPU SIMD:** A single software thread controls wide vector registers (128-bit, 256-bit, 512-bit), you write vector-aware code or rely on compiler loop vectorization.
+* **GPU SIMT (CUDA):** You write scalar code from the perspective of an individual thread (`threadIdx.x`), the GPU hardware scheduler bundles 32 threads into a **warp** and issues a single instruction across 32 physical ALUs simultaneously.
+* **Shared Constraint:** Both CPU SIMD and GPU SIMT require high memory coalescing (contiguous data layout) and suffer heavy penalties when branch divergence occurs across parallel lanes.
 
 ## Sources
 
