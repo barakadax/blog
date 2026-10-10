@@ -1,0 +1,18 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-10-10",
+  "level": "Advanced",
+  "tags": [
+    "engineering",
+    "storage",
+    "performance",
+    "columnar",
+    "row-oriented",
+    "databases",
+    "distributed systems",
+    "observability",
+    "csharp",
+    ".net"
+  ],
+  "share_text": "Why is Parquet the backbone of modern analytical engines? Columnar hierarchy, RLE encoding, and predicate push down explained. 📊⚡"
+}

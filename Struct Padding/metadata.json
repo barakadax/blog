@@ -1,0 +1,17 @@
+{
+  "author": "Barak Taya",
+  "date": "2026-10-10",
+  "level": "Advanced",
+  "tags": [
+    "low level",
+    "c cpp c++",
+    "rust",
+    "memory alignment",
+    "cpu cache",
+    "performance",
+    "compilers",
+    "data structures",
+    "optimization"
+  ],
+  "share_text": "Why does reordering struct fields cut memory usage and prevent cache misses? The mechanics of CPU word boundaries and struct padding. 🧩⚡"
+}
