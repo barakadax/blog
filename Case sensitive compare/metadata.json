@@ -5,12 +5,14 @@
     "tags": [
         "string comparison",
         "sensitivity",
+        "OrdinalIgnoreCase",
         "best practices",
         "pattern",
         "design",
         "algorithm",
         "manipulation",
-        "comparison"
+        "comparison",
+        "C# csharp python"
     ],
     "share_text": "Case sensitive compare, discover the logic behind string comparison! ✨"
 }
