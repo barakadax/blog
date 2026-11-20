@@ -15,6 +15,9 @@
 A hackathon is an intensive event, usually lasting from one day to several days, where individuals or teams collaborate to achieve specific goals.
 The organizers set these goals, which can involve software, hardware, or both.
 
+A hackathon does not have to be a competition between teams with a prize at the end.
+An organization can also run an internal, single-team hackathon—racing against the clock solely to build a POC (Proof of Concept).
+
 ## Personal Experience
 
 I have mentored at multiple hackathons and hope to do more.
@@ -29,6 +32,7 @@ Some of the events I have mentored at include:
 
 The organization hosting the event always has a specific goal in mind, such as:
 - Generating new product ideas to sell to customers
+- Building a rapid POC to validate feasibility for leadership
 - Solving a specific technical or business problem
 - Recruiting and evaluating new talent
 - Testing their tools, APIs, or platforms with real users
@@ -76,7 +80,7 @@ No matter how strong the problem and solution are, poor delivery makes them mean
 
 Presenters usually get only 4 to 10 minutes to show their work, coach them on the following:
 - **Speak clearly and professionally:** Use a calm, confident tone—neither too casual nor overly academic, clearly explain the problem, the solution, and why they fit together.
-- **Know your audience:** Judges are often non-technical, deep dives into code, chips, or servos rarely win them over, instead, highlight business impact: how much money or time the solution saves, and back it up with real-world data or percentages where possible without exaggerating.
+- **Know your audience:** Judges are often non-technical, and in internal POC hackathons they are leadership or stakeholders deciding whether the idea is worth investing in, deep dives into code or hardware rarely win them over, instead, highlight business impact: how much money it will earn, how much money or time the solution saves, and back it up with real-world data or percentages where possible without exaggerating.
 - **Embrace existing competitors:** If a similar solution already exists, that is great news—it proves market demand, help the team articulate why theirs is better (cost, features, reliability) and lean into that strength.
 - **Prefer a recorded demo over slides:** Judges want to see the product work, not read walls of text, aim for at most 2 slides plus a recorded demo, unless a live demo is required or guaranteed to work reliably, a recording provides a fixed point in time where everything worked and removes unnecessary risk.
 - **Run a timed rehearsal:** Have the team do at least one full, timed dry run before going on stage to fix pacing and unclear transitions.
